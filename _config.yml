@@ -7,7 +7,7 @@ title: Hexo         # 博客名
 subtitle:           # 副标题
 description:        # 站点描述
 author: John Doe    # 作者名
-language:           # 语言设置(和主题支持有关)
+language: zh-Hans   # 语言设置(和主题支持有关)
 timezone:           # 时区
 
 # URL
@@ -72,7 +72,7 @@ pagination_dir: page
 # Extensions           # 以下为第三方插件设置
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape       # 主题配置
+theme: next       # 主题配置
 
 feed: # RSS订阅插件
   type: atom

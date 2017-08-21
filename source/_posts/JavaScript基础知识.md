@@ -47,3 +47,4 @@ tags: JavaScript
    变量的声明要使用var操作符
 
    语法: **var** 变量名
+

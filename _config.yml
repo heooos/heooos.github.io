@@ -5,8 +5,8 @@
 # Site
 title: Hexo         # 博客名
 subtitle:           # 副标题
-description:        # 站点描述
-author: John Doe    # 作者名
+description: This is a simple website, I will try record something that I studying!       # 站点描述
+author: HaoZ    # 作者名
 language: zh-Hans   # 语言设置(和主题支持有关)
 timezone:           # 时区
 

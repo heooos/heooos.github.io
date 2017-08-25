@@ -2,6 +2,7 @@
 title: JavaScript规则
 date: 2017-08-23 13:37:47
 tags: JavaScript
+categories: JavaScript
 ---
 
 **JavaScript有几条规则需要遵守:**

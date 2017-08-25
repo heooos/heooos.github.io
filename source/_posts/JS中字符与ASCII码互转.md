@@ -1,7 +1,8 @@
 ---
 title: JS中字符与ASCII码互转
 date: 2017-08-21 14:39:50
-tags: JavaScript
+tags: JavaScript常用方法
+categories: JavaScript
 ---
 
 一、常用ASCII码

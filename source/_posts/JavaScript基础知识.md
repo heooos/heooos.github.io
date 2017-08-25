@@ -1,7 +1,8 @@
 ---
 title: JavaScript基础知识
 date: 2017-08-15 23:26:04
-tags: JavaScript
+categories: JavaScript
+tags: [JavaScript,基础,语法]
 ---
 
 ## JavaScript的注释与分号

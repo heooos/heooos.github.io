@@ -2,6 +2,7 @@
 title: JS中的概念解读
 date: 2017-08-24 21:32:25
 tags: JavaScript
+categories: JavaScript概念
 ---
 
 - 原型链

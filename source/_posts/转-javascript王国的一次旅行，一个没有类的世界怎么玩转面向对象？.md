@@ -1,7 +1,8 @@
 ---
 title: (转)javascript王国的一次旅行，一个没有类的世界怎么玩转面向对象？
 date: 2017-08-25 00:30:06
-tags: JavaScript
+tags: [JavaScript,原型链,构造函数]
+categories: JavaScript
 ---
 
 # 前言

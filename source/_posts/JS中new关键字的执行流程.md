@@ -1,7 +1,8 @@
 ---
 title: JS中new关键字的执行流程
 date: 2017-08-24 14:27:30
-tags: JavaScript
+tags: [JavaScript,new关键字]
+categories: JavaScript
 ---
 
 > 来源：http://javascript.ruanyifeng.com/oop/basic.html

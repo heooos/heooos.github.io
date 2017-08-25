@@ -1,7 +1,8 @@
 ---
 title: JavaScript instanceof
 date: 2017-08-24 21:40:29
-tags: JavaScript
+tags: [JavaScript,instanceof关键字]
+categories: JavaScript
 ---
 
 ### JavaScript instanceof 运算符代码

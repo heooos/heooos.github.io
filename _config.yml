@@ -89,6 +89,8 @@ plugins:
 baidusitemap: # 百度站点地图
   path: baidusitemap.xml
 
+# Place your favicon.ico to /source directory.  
+favicon: /favicon.ico
 
 # Deployment   # 网站部署设置
 ## Docs: https://hexo.io/docs/deployment.html  

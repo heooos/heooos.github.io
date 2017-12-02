@@ -5,7 +5,7 @@ tags: [OSI,网络]
 categories: 计算机网络
 ---
 
-OSI参考模型（七层）
+## OSI参考模型--概念
 
 - 应用层  
 
@@ -35,4 +35,9 @@ OSI参考模型（七层）
 
   **接口标准、电气标准，如何在物理链路上传输更快的速度**
 
+## OSI参考模型--图例
+
+![OSI参考模型](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/osi.png)
+
 资料来源：[计算机网络 UP主：zuilive](https://www.bilibili.com/video/av9876107/?from=search&seid=13687482474790201880#page=7)
+

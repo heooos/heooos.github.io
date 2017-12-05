@@ -1,11 +1,11 @@
 ---
 title: 常见的User Agent设置
 date: 2017-12-03 01:39:49
-tags: [python,web]
+tags: [python,爬虫,web]
 categories: Python
 ---
 
-##User Agent简介
+
 
 User Agent中文名为用户代理，简称 UA。
 

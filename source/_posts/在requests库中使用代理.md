@@ -81,9 +81,176 @@ SOCKS5 是一个代理协议，它在使用TCP/IP协议通讯的前端机器和�
 
    1. 首先下载ss5
 
-      ```
+      ```shell
       # 这个是一个日本大学的sourceforge镜像
       wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
       ```
 
-   2. ​
+      ![下载](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/download_file.png)
+
+   2. 然后解压压缩包：
+
+      ```shell
+      # 解压,"ss5-3.8.9-8.tar.gz"是刚才下载的压缩包
+      # -v过程显示文件 -z解压/压缩gzip -x解压操作 -f 后面加要操作的文件
+      tar -vzx -f ss5-3.8.9-8.tar.gz
+      ```
+
+      会解压出来很多文件，进入解压目录
+
+      ```shell
+      cd ss5-3.8.9/
+      ```
+
+      ![进入目录](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/cd.png)
+
+   3. 运行’./configure’
+
+      ```shell
+      # configure是一个shell脚本
+      # 主要的作用是对即将安装的程序进行配置，
+      # 检查当前的环境是否满足要安装程序的依赖关系.
+      # 如果系统环境合适，就会生成makefile，否则会报错。
+      ./configure
+      ```
+
+      ![运行config文件](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/config.png)
+
+      可以看到check通过了生成了makefile文件~
+
+      这时，我们`ls`一下就会看到文件(红色方框)：
+
+      ![makefile](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/makefile.png)
+
+   4. 接下来我们按照makefile中的规则编译ss5。
+
+      ```shell
+      # make是一个命令工具
+      # 解释 Makefile 中的规则。
+      # Makefile文件中描述了整个工程所有文件的编译顺序、编译规则。
+      # 实际上make是执行Makefile中的第一条命令
+      make
+      ```
+
+   5. 接下来开始安装刚刚编译的程序：
+
+      ```shell
+      # 执行Makefile中的install
+      # 这些都可以在Makefile文件中看到
+      # 可以使用vim Makefile查看文件
+      make install
+      ```
+
+      这样安装就完成了。
+
+
+
+### ss5基本配置
+
+这时我们启动ss5
+
+```shell
+service ss5 start
+```
+
+可能会出现如下情况：
+
+![权限问题](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/start.png)
+
+原因权限不足，我们修改一下权限：
+
+```shell
+# a+x 给所有人加上可执行权限(所有者，所属组，其他)
+chmod a+x /etc/init.d/ss5
+```
+
+再启动ss5，就没有问题了~
+
+![重新启动](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/re_start.png)
+
+目前为止只是安装上了ss5，也可以正常运行服务，但实际上代理服务还是用不了， 
+需要配置一下文件。
+
+首先我们打开ss5的配置文件。
+
+```shell
+vim /etc/opt/ss5/ss5.conf
+```
+
+![auth](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/auth.png)
+
+![permit](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/permit.png)
+
+把这两处的注释打开(就是auth,permit这两行)
+
+保存并重启ss5(`service ss5 restart`)
+
+这样一个最基本的代理功能就可以使用了
+
+但是有时我们想设置用户，只允许他们使用代理。
+
+这样，我们就需要将上面两处改为
+
+```shell
+auth 0.0.0.0/0 – u
+```
+
+```
+permit u 0.0.0.0/0 – 0.0.0.0/0 – – – – -
+```
+
+就是将其中的一个’-‘用’u’代替。
+
+然后打开`/etc/opt/ss5/ss5.passwd`
+
+```shell
+vim /etc/opt/ss5/ss5.passwd
+```
+
+在第一行加入你允许的用户名和密码,例如
+
+![设置用户名密码](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/uname_pwd.png)
+
+别忘了 **重启ss5** (`service ss5 restart`)
+
+
+
+### 测试代理是否成功
+
+首先：
+
+使用Python写一个简单的网页读取程序：
+
+![demo](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/demo.png)
+
+关于proxies的规则，参考requests官方文档。
+
+get()函数加入proxies参数之前
+
+![fail](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/fail.png)
+
+添加代理之后
+
+![](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/vps_install_ss5/success.png)
+
+成功过墙读取到目标网页。
+
+
+
+### 以上的命令汇总
+
+```shell
+yum install gcc openldap-devel pam-devel openssl-devel
+wget http://jaist.dl.sourceforge.net/project/ss5/ss5/3.8.9-8/ss5-3.8.9-8.tar.gz
+tar -vzx -f ss5-3.8.9-8.tar.gz
+cd ss5-3.8.9/
+./configure
+make
+make install
+chmod a+x /etc/init.d/ss5
+service ss5 start
+vim /etc/opt/ss5/ss5.conf
+# 修改配置文件
+service ss5 restart
+```
+

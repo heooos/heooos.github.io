@@ -5,7 +5,7 @@ tags: [python,requests库]
 categories: Python
 ---
 
-##前言
+# 前言
 
 一直以来都想学点Python相关的内容，最近有需要爬取一些网页，开始Python的学习之旅。
 
@@ -17,7 +17,9 @@ categories: Python
 
 在练习过程中，我遇到了下面的问题：
 
-##一、遇到的问题以及解决思路
+
+
+# 遇到的问题以及解决思路
 
 **问题：如何爬取国内无法正常访问的的网页？**
 
@@ -49,19 +51,19 @@ requests高级应用中可以让我们设置代理来对网站进行访问。使
 
 
 
-## 二、在VPS上搭建代理服务器
+# 在VPS上搭建代理服务器
 
-### 写在前面
+## 写在前面
 
 本文内容将详细说明如何向自己的服务器添加代理功能(SOCKS5)。
 
-### 环境
+## 环境
 
 **服务器主机** ：DigitalOcean 512 MB Memory / 20 GB Disk 
 **服务器操作系统**：CentOS 7.2 64位 
 **客户端操作系统**：Mac(客户端无所谓，只是用来登录远程主机而已)
 
-### 关于SOCKS5
+## 关于SOCKS5
 
 这里只做简单介绍。 
 SOCKS5 是一个代理协议，它在使用TCP/IP协议通讯的前端机器和服务器机器之间扮演一个中介角色，使得内部网中的前端机器变得能够访问Internet网中的服务器，或者使通讯更加安全。
@@ -73,7 +75,7 @@ SOCKS5 是一个代理协议，它在使用TCP/IP协议通讯的前端机器和�
 我接触这个是因为，我的客户端没有办法直接访问一部分服务端(被墙了),但是我可以访问代理服务器,而且代理服务器可以访问我需要的服务端。 
 所以我尝试通过代理服务器来访问需要的服务端(翻墙)。
 
-### 主机安装SS5
+## 主机安装SS5
 
 1. 通过yum安装ss5 **依赖包**：```yum install gcc openldap-devel pam-devel openssl-devel```
 
@@ -145,7 +147,7 @@ SOCKS5 是一个代理协议，它在使用TCP/IP协议通讯的前端机器和�
 
 
 
-### ss5基本配置
+## ss5基本配置
 
 这时我们启动ss5
 
@@ -215,7 +217,7 @@ vim /etc/opt/ss5/ss5.passwd
 
 
 
-### 测试代理是否成功
+## 测试代理是否成功
 
 首先：
 
@@ -237,7 +239,7 @@ get()函数加入proxies参数之前
 
 
 
-### 以上的命令汇总
+## 以上的命令汇总
 
 ```shell
 yum install gcc openldap-devel pam-devel openssl-devel
@@ -254,3 +256,57 @@ vim /etc/opt/ss5/ss5.conf
 service ss5 restart
 ```
 
+
+
+
+
+# 后续更新
+
+上次创建代理成功之后，一直都使用的非常嗨皮~  但是，由于某次vps因故重启后，ss5竟然不工作了。
+
+因为之前是将ss5的启动加入到自启动列表的，所以ss5应该是会自启动的，但是使用的时候，一直代理异常。于是：
+
+* ssh登录到vps  手动启动一下ss5服务
+
+  ```shell
+  service ss5 start
+  ```
+
+  系统提示 ok。  但是测试代理 还是链接异常
+
+* 通过命令查看当前启动的服务
+
+
+  ```shell
+  service --status-all
+  ```
+
+  返回：
+
+  ```shell
+  ● ss5.service - SYSV: This script takes care of starting and stopping ss5
+     Loaded: loaded (/etc/rc.d/init.d/ss5; bad; vendor preset: disabled)
+     Active: active (exited) since Sat 2017-12-23 08:34:53 UTC; 4min 2s ago
+       Docs: man:systemd-sysv-generator(8)
+    Process: 14104 ExecStart=/etc/rc.d/init.d/ss5 start (code=exited, status=0/SUCCESS)
+
+  Dec 23 08:34:53 localname systemd[1]: Starting SYSV: This script takes care of starting and stopping ss5...
+  Dec 23 08:34:53 localname ss5[14104]: [67B blob data]
+  Dec 23 08:34:53 localname ss5[14104]: Can't unlink pid file /var/run/ss5/ss5.pid
+  Dec 23 08:34:53 localname systemd[1]: Started SYSV: This script takes care of starting and stopping ss5.
+  Dec 23 08:34:53 localname ss5[14104]: done
+  ```
+
+  其中一句：
+
+  ```shell
+  Can't unlink pid file /var/run/ss5/ss5.pid
+  ```
+
+  根据此句继续查找解决方案
+
+* 创建 /var/run/ss5 目录后再启动 ss5 
+
+  每次重启电脑后会将该文件夹删除。so，重建该文件夹后重新启动ss5 就ok了~
+
+  ​

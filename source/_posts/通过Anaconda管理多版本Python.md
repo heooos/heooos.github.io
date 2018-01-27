@@ -63,3 +63,6 @@ source deactivate python36
 
 打开安装好的Anaconda工具
 
+![](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/anaconda/anaconda_launcher.png)
+
+很清晰的操作界面。通过可视化界面也可以很轻松的创建管理Python版本。

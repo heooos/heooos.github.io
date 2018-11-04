@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,基础库,math库,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="Python中提供了Math库，用于进行数学计算。 使用时，只需在文件开始导入即可import math 常用的函数及其功能如下表：    函数名 函数功能 说明/示例     math.acos(x) 返回 x 的反余弦    math.acosh(x) 返回 x 的反双曲余弦    math.asin(x) 返回 x 的反正弦    math.asinh(x) 返回 x 的反双曲正弦    m">
+<meta name="keywords" content="python,基础库,math库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础库之Math库">
+<meta property="og:url" content="http://yoursite.com/2017/11/30/Python基础库之Math库/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Python中提供了Math库，用于进行数学计算。 使用时，只需在文件开始导入即可import math 常用的函数及其功能如下表：    函数名 函数功能 说明/示例     math.acos(x) 返回 x 的反余弦    math.acosh(x) 返回 x 的反双曲余弦    math.asin(x) 返回 x 的反正弦    math.asinh(x) 返回 x 的反双曲正弦    m">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-27T12:47:11.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python基础库之Math库">
+<meta name="twitter:description" content="Python中提供了Math库，用于进行数学计算。 使用时，只需在文件开始导入即可import math 常用的函数及其功能如下表：    函数名 函数功能 说明/示例     math.acos(x) 返回 x 的反余弦    math.acosh(x) 返回 x 的反双曲余弦    math.asin(x) 返回 x 的反正弦    math.asinh(x) 返回 x 的反双曲正弦    m">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/30/Python基础库之Math库/">
+
+
+
+
+
+  <title>Python基础库之Math库 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/Python基础库之Math库/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HaoZ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python基础库之Math库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-30T00:30:07+08:00">
+                2017-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Python中提供了Math库，用于进行数学计算。</p>
+<p>使用时，只需在文件开始导入即可<strong><code>import math</code></strong></p>
+<p>常用的函数及其功能如下表：</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th style="text-align:left">函数功能</th>
+<th style="text-align:left">说明/示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>math.acos(x)</td>
+<td style="text-align:left">返回 x 的反余弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.acosh(x)</td>
+<td style="text-align:left">返回 x 的反双曲余弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.asin(x)</td>
+<td style="text-align:left">返回 x 的反正弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.asinh(x)</td>
+<td style="text-align:left">返回 x 的反双曲正弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.atan(x)</td>
+<td style="text-align:left">返回 x 的反正切</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.atan2(y,x)</td>
+<td style="text-align:left">返回 y/x 的反正切</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.atanh(x)</td>
+<td style="text-align:left">返回 x 的反双曲正切</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.ceil(x)</strong></td>
+<td style="text-align:left">返回≧ x 的最小整数</td>
+<td style="text-align:left">math.ceil(3.4)  結果 4.0</td>
+</tr>
+<tr>
+<td>math.copysign(x,y)</td>
+<td style="text-align:left">返回与 y 同号的 x 值</td>
+<td style="text-align:left">math.copysign(-1.9, 2.9)     返回1.9</td>
+</tr>
+<tr>
+<td>math.cos(x)</td>
+<td style="text-align:left">返回 x 的余弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.cosh(x)</td>
+<td style="text-align:left">返回 x 的双曲余弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.degrees(x)</strong></td>
+<td style="text-align:left">將 x (弧长) 转成角度，与 radians 为反函数</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.e</strong></td>
+<td style="text-align:left">常数   e = 2.7128…</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.exp(x)</td>
+<td style="text-align:left">返回 e<sup>x</sup>也就是 math.e**x</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.fabs(x)</strong></td>
+<td style="text-align:left">返回 x 的绝对值</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.factorial(x)</td>
+<td style="text-align:left">返回 x!</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.floor(x)</strong></td>
+<td style="text-align:left">返回 ≦ x 的最大整数</td>
+<td style="text-align:left">math.floor(3.4) 結果 3.0</td>
+</tr>
+<tr>
+<td>math.fmod(x,y)</td>
+<td style="text-align:left">返回 x对y取模的余数fmod 类似 %，但产生的结果可能与%不同，因为前者以y来决定余数的符号，后者以x来决定余数的符号。</td>
+<td style="text-align:left">print(-2%3,math.fmod(-2,3))返回 (1, -2.0)</td>
+</tr>
+<tr>
+<td>math.frexp(x)</td>
+<td style="text-align:left">Return the mantissa and exponent of x, as pair (m, e).                                                        m is a float and e is an int, such that x = m <em> 2.*</em>e.                                                                  If x is 0, m and e are both 0.  Else 0.5 &lt;= abs(m) &lt; 1.0.</td>
+<td style="text-align:left">math.frexp(1.625)               返回(0.8125,1)</td>
+</tr>
+<tr>
+<td>math.fsum(x)</td>
+<td style="text-align:left">返回 x 阵列值的各項和（ 无损精度的和）</td>
+<td style="text-align:left">0.1+0.2+0.3                          返回0.6000000000000001   math.fsum([0.1, 0.2,0.3])   返回0.6</td>
+</tr>
+<tr>
+<td>math.hypot(x,y)</td>
+<td style="text-align:left">返回 &radic;x<sup>2</sup>+y<sup>2</sup>  （以x和y为直角边的斜边长）</td>
+<td style="text-align:left">math.hypot(3,4)                  返回5.0</td>
+</tr>
+<tr>
+<td>math.isinf(x)</td>
+<td style="text-align:left">若x不是数字，返回True；否则，返回False</td>
+<td style="text-align:left">math.isnan(1.2e3)              返回False</td>
+</tr>
+<tr>
+<td>math.isnan(x)</td>
+<td style="text-align:left">如果 x = Non (not a number)返回 True</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.ldexp(m,n)</td>
+<td style="text-align:left">返回 m×2n与 frexp 是反函数</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.log(x,a)</td>
+<td style="text-align:left">返回log<sub>a</sub>x 若不写a 默认为e</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.log10(x)</td>
+<td style="text-align:left">返回log<sub>10</sub>x</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.modf(x)</td>
+<td style="text-align:left">返回 x 的小数部份与整数部份</td>
+<td style="text-align:left">math.modf(2.123)             返回 (0.1231230000000001, 2.0)</td>
+</tr>
+<tr>
+<td><strong>math.pi</strong></td>
+<td style="text-align:left">常数  π (3.14159…)</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.pow(x,y)</strong></td>
+<td style="text-align:left">返回 x<sup>y</sup></td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.radians(d)</td>
+<td style="text-align:left">将 x(角度) 转成弧长，与 degrees 为反函数</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.sin(x)</td>
+<td style="text-align:left">返回 x 的正弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.sinh(x)</td>
+<td style="text-align:left">返回 x 的双曲正弦</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td><strong>math.sqrt(x)</strong></td>
+<td style="text-align:left">返回&radic;x</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.sqrt(x)</td>
+<td style="text-align:left">返回 x 的正切</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.tanh(x)</td>
+<td style="text-align:left">返回 x 的双曲正切</td>
+<td style="text-align:left"></td>
+</tr>
+<tr>
+<td>math.trunc(x)</td>
+<td style="text-align:left">返回 x 的整数部份，等同 int</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/基础库/" rel="tag"># 基础库</a>
+          
+            <a href="/tags/math库/" rel="tag"># math库</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/28/GitHub-Pages-Hexo搭建博客/" rel="next" title="GitHub Pages + Hexo搭建博客">
+                <i class="fa fa-chevron-left"></i> GitHub Pages + Hexo搭建博客
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/30/Python中常见的异常类型/" rel="prev" title="python中常见的异常类型">
+                python中常见的异常类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">HaoZ</p>
+              <p class="site-description motion-element" itemprop="description">This is a simple website, I will try record something that I studying!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HaoZ</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

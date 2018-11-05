@@ -37,7 +37,13 @@ categories: 计算机网络
 
 ## OSI参考模型--图例
 
-![OSI参考模型](https://raw.githubusercontent.com/heooos/heooos.github.io/master/img_res/osi.png)
+![OSI参考模型](https://raw.githubusercontent.com/heooos/ImageResourceRepo/master/20181105/osi-interpretation.png)
 
-资料来源：[计算机网络 UP主：zuilive](https://www.bilibili.com/video/av9876107/?from=search&seid=13687482474790201880#page=7)
+![OSI参考模型](https://raw.githubusercontent.com/heooos/ImageResourceRepo/master/20181105/osi-model.png)
+
+![OSI参考模型](https://raw.githubusercontent.com/heooos/ImageResourceRepo/master/20181105/osi-model-%20Protocol.png)
+
+资料来源：
+1.[计算机网络 UP主：zuilive](https://www.bilibili.com/video/av9876107/?from=search&seid=13687482474790201880#page=7)
+2.图源：[钛白Logic](http://www.cnblogs.com/qishui/p/5428938.html)
 
